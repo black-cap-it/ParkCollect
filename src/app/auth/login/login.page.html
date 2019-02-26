@@ -1,0 +1,35 @@
+<ion-content>
+
+  <div class="content" text-center>
+      <div class="overlay" padding>
+        
+        <ion-grid>
+          <ion-row align-content-end>
+            <ion-col size="12" align-self-center>
+                <img src="../../../assets/images/logo.png" class="logo" alt="">
+              <p padding-horizontal>Logge Dich mit <strong>Deiner E-Mail</strong> und<br><strong>Deinem Passwort</strong> ein.</p>
+              <br>
+              <form>
+                <ion-input type="email" placeholder="E-Mail"></ion-input>
+                <ion-input type="password" placeholder="Passwort"></ion-input>
+                <br>
+                <a href="">Passwort vergessen?</a>
+                <br>
+                <p padding-horizontal>Du hast noch keinen <strong>Zugang</strong> dann <strong>registriere</strong> Dich jetzt kostenlos.</p>
+                <br>
+                <div class="btn-wrap">
+                  <ion-button class="regbtn" routerLink="/auth/register" shape="round" expand="full">Registrieren</ion-button>
+                </div>
+              </form>
+            </ion-col>
+            <ion-col size="12" align-self-end>
+              <div class="btn-wrap" padding-bottom margin-bottom>
+                <ion-button class="logbtn" routerLink="/home" shape="round" expand="block">Einloggen</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+  </div>
+
+</ion-content>

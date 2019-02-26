@@ -1,12 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <div class="content" text-center>
+      <div class="overlay" padding>
+        
+        <ion-grid>
+          <ion-row align-content-end>
+            <ion-col size="12" align-self-center>
+                <img src="../../../assets/images/logo.png" class="logo" alt="">
+            </ion-col>
+            <ion-col size="12" align-self-end>
+              <div class="btn-wrap" padding-bottom margin-bottom>
+                <div class="actbtn manbtn button ion-activatable" routerLink="/tabs/manage" shape="round" expand="block">
+                  <img src="../../assets/images/manage-parking.png" alt="">
+                  <br>
+                  Parkplätze verwalten
+                </div>
+              </div>
+              <div class="btn-wrap" padding-bottom margin-bottom>
+                <div class="actbtn manbtn button ion-activatable" routerLink="/home" shape="round" expand="block">
+                  <img src="../../assets/images/false-parking.png" alt="">
+                  <br>
+                  Falschparker erfassen
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+  </div>
+
 </ion-content>

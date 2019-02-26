@@ -1,0 +1,15 @@
+ion-item {
+    --padding-start: 0;
+    --inner-padding-top: 3px;
+    --inner-padding-bottom: 3px; 
+}
+ion-item ion-label {
+    padding-left: 16px;
+    font-weight: bold;
+    font-family: 'Frutiger Bold';
+    color: #77787b;
+    min-width: 30%;
+}
+ion-item ion-input {
+    color: #77787b;
+}

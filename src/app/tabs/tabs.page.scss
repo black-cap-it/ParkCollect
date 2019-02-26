@@ -1,0 +1,42 @@
+.tabbar {
+    background: rgb(0,94,168);
+    background: -moz-linear-gradient(top, rgba(0,94,168,1) 0%, rgba(0,48,93,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,94,168,1) 0%,rgba(0,48,93,1) 100%);
+    background: linear-gradient(to bottom, rgba(0,94,168,1) 0%,rgba(0,48,93,1) 100%);
+    height: 100px;
+    position: relative;
+}
+
+.tabbar ion-tab-button {
+    background: transparent;
+}
+.tabbar ion-tab-button img {
+    display: block;
+    margin: 0 auto 5px;
+    opacity: 0.5;
+}
+.tabbar ion-tab-button ion-label {
+    color: #fff;
+    opacity: 0.5;
+}
+.tabbar ion-tab-button.tab-selected img,
+.tabbar ion-tab-button.tab-selected ion-label {
+    opacity: 1;
+}
+.logoContainer {
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    bottom: var(--ion-safe-area-bottom,0);
+}
+.footer-logo {
+    height: 100px;
+    width: auto;
+    transform: translateY(-50%);
+
+}

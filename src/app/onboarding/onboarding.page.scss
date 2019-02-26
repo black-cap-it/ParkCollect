@@ -1,0 +1,45 @@
+.ob-slide {
+    height: 100%;
+    color: #fff;
+    --bullet-background: rgba(255,255,255,0.5);
+    --bullet-background-active: rgba(255,255,255,1);
+}
+#slide1 {
+    background: url(../../assets/images/slide1.jpg) no-repeat;
+    background-size: contain;
+}
+#slide2 {
+    background: url(../../assets/images/slide2.jpg) no-repeat;
+    background-size: contain;
+}
+#slide3 {
+    background: url(../../assets/images/slide3.jpg) no-repeat;
+    background-size: contain;
+}
+.swiper-slide {
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1rem;
+}
+.inner-slide {
+    background: linear-gradient(to bottom, rgba(0, 94, 168, 0) 20%, rgba(0, 83, 149, 1) 60%, #00305d 100%);
+    height: 100%;
+    padding-top: 55vh;
+}
+ion-button {
+    width: fit-content;
+    margin: 0 auto;
+    font-family: 'Frutiger Ultra';
+}
+.obbutton {
+    --background: rgba(0,0,0,0.35);
+    --background-activated: rgba(0,0,0,0.9);
+}
+.logo {
+    position: absolute;
+    max-width: 150px;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

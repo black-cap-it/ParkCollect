@@ -1,0 +1,33 @@
+ion-item {
+    --padding-start: 0;
+}
+ion-item ion-label {
+    min-height: 70px;
+    padding-left: 16px;
+}
+ion-item ion-button {
+    --background: transparent;
+    color: #77787b;
+}
+ion-item {
+    font-family: 'Frutiger Bold'!important;
+    color: #77787b;
+}
+ion-item h3 {
+    font-family: 'Frutiger Light Condensed'!important;
+    font-size: 1em;
+}
+.bg-white {
+    background: #fff;
+    padding-bottom: 50px;
+}
+.action-btn {
+    --border-radius: 0;
+    font-family: 'Frutiger Bold'!important;
+    --color: #66af24;
+    --ion-color-contrast: #E12223!important;
+    --color-activated: #77787b;
+    --color-focused: #77787b;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+}

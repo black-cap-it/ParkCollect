@@ -1,1 +1,61 @@
+.content {
+    background: url(../../assets/images/home-head.jpg) no-repeat;
+    background-size: contain;
+    color: #fff;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+ion-grid, ion-row {
+    min-height: 100%;
+}
+.scroll {
+    height: 100%;
+}
+.overlay {
+    height: 100%;
+    display: flex;
+    flex: 1;
+    background: linear-gradient(to bottom, rgba(0, 94, 168, 0) 10%, rgba(0, 83, 149, 1) 30%, #00305d 100%);
+}
+.logo {
+    max-width: 150px;
+    margin-top: 30px;
+}
+ion-input {
+    --background: rgba(0,0,0,0.35);
+    margin-bottom: 8px;
+    border-radius: 30px;
+    padding-top: 4px!important;
+    padding-bottom: 4px!important;
+    --placeholder-color: #fff;
+    --placeholder-opacity: 1;
+    --placeholder-font-weight: bold;
+}
+a {
+    color: #fff;
+}
+.btn-wrap {
+    padding: 0;
+}
+ion-button {
+    font-family: 'Frutiger Bold';
+}
+.actbtn {
+    min-height: 30vh;
+    border-radius: 30px;
+    padding: 10px;
+    background: rgba(0,94,168,0.8);
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.actbtn.activated {
+    background: rgba(0,94,168,1);
+}
+.actbtn img {
+    max-height: 130px;
 
+}

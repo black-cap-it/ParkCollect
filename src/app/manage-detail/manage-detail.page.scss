@@ -1,0 +1,74 @@
+ion-item {
+    --padding-start: 0;
+    --inner-padding-top: 3px;
+    --inner-padding-bottom: 3px; 
+}
+ion-item ion-label {
+    padding-left: 16px;
+    font-weight: bold;
+    font-family: 'Frutiger Bold';
+    color: #77787b;
+    min-width: 30%;
+}
+ion-item ion-input {
+    color: #77787b;
+}
+ion-grid {
+    --ion-grid-padding: 0;
+}
+ion-col {
+    --ion-grid-column-padding: 0;
+}
+ion-button {
+    margin: 0;
+}
+.img {
+    margin-right: 2px;
+}
+.cam {
+    margin-left: 2px;
+}
+ion-footer ion-toolbar {
+    --background: #000;
+    --padding-bottom: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 0;
+    padding-bottom: 0;
+}
+ion-footer ion-toolbar div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+}
+.saveBtn {
+    display: inline-flex;
+    margin: auto;
+    font-family: 'Frutiger Bold';
+    font-size: 18px;
+    --background: rgba(0,0,0,0.3);
+    --padding-start: 40px;
+    --padding-end: 40px;
+    --border-radius: 40px;
+    --background-activated: #77787b;
+}
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    --background: rgba(255,255,255,0.6);
+    color: #77787b;
+    font-family: 'Frutiger Bold';
+    --padding-top: 6px;
+    --padding-bottom: 6px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --border-radius: 5px;
+    font-size: 22px;
+    height: auto;
+}

@@ -9,3 +9,134 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+:root {
+    --ion-color-primary: #005EA8;
+    --ion-color-primary-rgb: 0,94,168;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #005394;
+    --ion-color-primary-tint: #1a6eb1;
+  
+    --ion-color-secondary: #00305D;
+    --ion-color-secondary-rgb: 0,48,93;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #002a52;
+    --ion-color-secondary-tint: #1a456d;
+  
+    --ion-color-tertiary: #7044ff;
+    --ion-color-tertiary-rgb: 112,68,255;
+    --ion-color-tertiary-contrast: #ffffff;
+    --ion-color-tertiary-contrast-rgb: 255,255,255;
+    --ion-color-tertiary-shade: #633ce0;
+    --ion-color-tertiary-tint: #7e57ff;
+  
+    --ion-color-success: #10dc60;
+    --ion-color-success-rgb: 16,220,96;
+    --ion-color-success-contrast: #ffffff;
+    --ion-color-success-contrast-rgb: 255,255,255;
+    --ion-color-success-shade: #0ec254;
+    --ion-color-success-tint: #28e070;
+  
+    --ion-color-warning: #ffce00;
+    --ion-color-warning-rgb: 255,206,0;
+    --ion-color-warning-contrast: #ffffff;
+    --ion-color-warning-contrast-rgb: 255,255,255;
+    --ion-color-warning-shade: #e0b500;
+    --ion-color-warning-tint: #ffd31a;
+  
+    --ion-color-danger: #f04141;
+    --ion-color-danger-rgb: 245,61,61;
+    --ion-color-danger-contrast: #ffffff;
+    --ion-color-danger-contrast-rgb: 255,255,255;
+    --ion-color-danger-shade: #d33939;
+    --ion-color-danger-tint: #f25454;
+  
+    --ion-color-dark: #77787b;
+    --ion-color-dark-rgb: 119,120,123;
+    --ion-color-dark-contrast: #ffffff;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #696a6c;
+    --ion-color-dark-tint: #858688;
+  
+    --ion-color-medium: #e7e7e8;
+    --ion-color-medium-rgb: 231,231,232;
+    --ion-color-medium-contrast: #000000;
+    --ion-color-medium-contrast-rgb: 0,0,0;
+    --ion-color-medium-shade: #cbcbcc;
+    --ion-color-medium-tint: #e9e9ea;
+  
+    --ion-color-light: #f4f5f8;
+    --ion-color-light-rgb: 244,244,244;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #d7d8da;
+    --ion-color-light-tint: #f5f6f9;
+  }
+
+@font-face {
+    font-family: 'Frutiger Bold';
+    src: url('assets/fonts/Frutiger-Bold.eot');
+    src: url('assets/fonts/Frutiger-Bold.eot?#iefix') format('embedded-opentype'),
+        url('assets/fonts/Frutiger-Bold.woff2') format('woff2'),
+        url('assets/fonts/Frutiger-Bold.woff') format('woff'),
+        url('assets/fonts/Frutiger-Bold.ttf') format('truetype'),
+        url('assets/fonts/Frutiger-Bold.svg#Frutiger-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Frutiger Light Condensed';
+    src: url('assets/fonts/Frutiger-LightCn.eot');
+    src: url('assets/fonts/Frutiger-LightCn.eot?#iefix') format('embedded-opentype'),
+        url('assets/fonts/Frutiger-LightCn.woff2') format('woff2'),
+        url('assets/fonts/Frutiger-LightCn.woff') format('woff'),
+        url('assets/fonts/Frutiger-LightCn.ttf') format('truetype'),
+        url('assets/fonts/Frutiger-LightCn.svg#Frutiger-LightCn') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Frutiger Ultra';
+    src: url('assets/fonts/Frutiger-UltraBlack.eot');
+    src: url('assets/fonts/Frutiger-UltraBlack.eot?#iefix') format('embedded-opentype'),
+        url('assets/fonts/Frutiger-UltraBlack.woff2') format('woff2'),
+        url('assets/fonts/Frutiger-UltraBlack.woff') format('woff'),
+        url('assets/fonts/Frutiger-UltraBlack.ttf') format('truetype'),
+        url('assets/fonts/Frutiger-UltraBlack.svg#Frutiger-UltraBlack') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+$font-family-base: "Frutiger Light Condensed", sans-serif !default;
+body {
+    font-family: 'Frutiger Light Condensed'!important;
+}
+strong, h1, h2, h3 {
+    font-family: 'Frutiger Bold'!important;
+}
+h4 {
+    font-family: 'Frutiger Light Condensed'!important;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: 40px;
+}
+ion-toolbar {
+    --min-height: 120px;
+    color: #77787b;
+    font-family: 'Frutiger Bold'!important;
+}
+ion-toolbar ion-title img {
+    max-height: 60px;
+}
+ion-buttons.menu ion-icon {
+    width: 3rem;
+    height: 3rem;;
+}
+ion-page {
+    background: #fff;
+}
