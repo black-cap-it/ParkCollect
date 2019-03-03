@@ -19,23 +19,23 @@
 
   <ion-item>
     <ion-label>Parkplatz</ion-label>
-    <ion-input>Parkplatz 012</ion-input>
+    <ion-input [(ngModel)]="parkingInfo.parkplatz"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Straße</ion-label>
-    <ion-input>Franzstraße</ion-input>
+    <ion-input [(ngModel)]="parkingInfo.strab"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Haus-Nr.</ion-label>
-    <ion-input>48</ion-input>
+    <ion-input [(ngModel)]="parkingInfo.haus"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>PLZ</ion-label>
-    <ion-input>52064</ion-input>
+    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="parkingInfo.plz"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Ort</ion-label>
-    <ion-input>Aachen</ion-input>
+    <ion-input [(ngModel)]="parkingInfo.ort"></ion-input>
   </ion-item>
 </ion-content>
 <ion-footer>
@@ -60,9 +60,9 @@
         </ion-grid>
   <ion-toolbar>
 
-        <div id="component-id" [style.backgroundImage]="'url(' + img + ')'">
-          <ion-button class="saveBtn">Speichern</ion-button>
-          <ion-button class="closeBtn">X</ion-button>
+        <div id="component-id" [style.backgroundImage]="'url(' + dummyImg + ')'">
+          <ion-button class="saveBtn" (click)="saveParking()">Speichern</ion-button>
+          <ion-button class="closeBtn" (click)="deleteImage()">X</ion-button>
         </div>
 
   </ion-toolbar>

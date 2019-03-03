@@ -72,3 +72,10 @@ ion-footer ion-toolbar div {
     font-size: 22px;
     height: auto;
 }
+
+ion-select {
+    max-width: 100%;
+    flex: 3;
+    --padding-start: 0;
+    color: #77787b;
+}

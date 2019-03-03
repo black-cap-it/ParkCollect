@@ -3,7 +3,7 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.43.65:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -83,7 +83,6 @@
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^3.1.2" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
     <plugin name="cordova-plugin-googlemaps" spec="2.5.1">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAEpJMQmijgPW3t1TFDAtvIXxllhMJEiw0" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyAEpJMQmijgPW3t1TFDAtvIXxllhMJEiw0" />
@@ -93,7 +92,11 @@
     </plugin>
     <plugin name="cordova-plugin-add-swift-support" spec="^1.7.2" />
     <allow-navigation href="http://192.168.12.65:8101" sessionid="d51612db" />
-    <allow-navigation href="http://192.168.43.65:8100" sessionid="6e7cf5c8" />
+    <allow-navigation href="http://192.168.43.65:8100" sessionid="8e9abde2" />
+    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
+    <allow-navigation href="http://192.168.12.65:8100" sessionid="8af45d07" />
+    <plugin name="com.testfairy.cordova-plugin" spec="2.14.0" />
+    <plugin name="cordova-plugin-console" spec="1.1.0" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />
     <engine name="browser" spec="5.0.4" />

@@ -1,6 +1,9 @@
 ion-item {
     --padding-start: 0;
+    --background-activated: var(--ion-color-light-shade);
+    --highlight-color-focused: var(--ion-color-light-shade);
 }
+
 ion-item ion-label {
     min-height: 70px;
     padding-left: 16px;
@@ -8,6 +11,13 @@ ion-item ion-label {
 ion-item ion-button {
     --background: transparent;
     color: #77787b;
+    --background-activated: transparent;
+}
+.edit {
+    --color-activated: #66af24;
+}
+.del {
+    --color-activated: #E12223;
 }
 ion-item {
     font-family: 'Frutiger Bold'!important;

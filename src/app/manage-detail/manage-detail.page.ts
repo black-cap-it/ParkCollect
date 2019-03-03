@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuPage } from '../menu/menu.page';
-import { AlertController, ModalController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { LoadingController, AlertController, ModalController, NavController } from '@ionic/angular';
 import {
+  LocationService,
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
   GoogleMapOptions,
   CameraPosition,
   MarkerOptions,
-  Marker
+  Marker,
+  MyLocation
 } from '@ionic-native/google-maps';
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { CrudService } from '../services/crud/crud.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 @Component({
@@ -19,12 +24,61 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
   templateUrl: './manage-detail.page.html',
   styleUrls: ['./manage-detail.page.scss'],
 })
+
+
 export class ManageDetailPage implements OnInit {
 
   map: GoogleMap;
-  img: string = "../../assets/images/dummy-image.jpg";
+  dummyImg = '../../assets/images/dummy-image.jpg';
+  parkingInfo = {
+    xcord: 0,
+    ycord: 0,
+    parkplatz: '',
+    strab: '',
+    haus: '',
+    plz: '',
+    ort: '',
+    image: '',
+    remember_token: ''
+  }
+  private parkid;
+  private token;
+  private baseUrl= 'http://api.parkcollect.draft-box.de/';
 
-  constructor(public alertController: AlertController, public modalController: ModalController, private photoLibrary: PhotoLibrary, private camera: Camera) { }
+  constructor(
+    public alertController: AlertController, 
+    public modalController: ModalController, 
+    private photoLibrary: PhotoLibrary, 
+    private camera: Camera, 
+    public crud: CrudService, 
+    private nativeStorage: NativeStorage, 
+    public loadingCtrl: LoadingController,
+    private route: ActivatedRoute,
+    public navCtrl: NavController
+  ) { }
+
+  ionViewWillEnter(){
+    this.parkid= this.route.snapshot.paramMap.get('id');
+    if(this.parkid) {
+      this.crud.viewParking(this.parkid).then((res: any) => {
+        console.log('res: ' + res);
+        this.parkingInfo = res;
+        this.parkingInfo.remember_token = this.token;
+        this.dummyImg = this.baseUrl + this.parkingInfo.image;
+        delete this.parkingInfo.image;
+        this.loadMap();
+      })
+    } else {
+      this.loadMap();
+    }
+  }
+
+  async presentLoading(msg) {
+    const loading = await this.loadingCtrl.create({
+      message: msg
+    });
+    return await loading.present();
+  }
 
   getPhoto() {
     const options: CameraOptions = {
@@ -39,7 +93,8 @@ export class ManageDetailPage implements OnInit {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.img = base64Image;
+      this.dummyImg = base64Image;
+      this.parkingInfo.image = imageData;
     }, (err) => {
       // Handle error
       this.presentAlert();
@@ -59,14 +114,18 @@ export class ManageDetailPage implements OnInit {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.img = base64Image;
+      this.dummyImg = base64Image;
+      this.parkingInfo.image = imageData;
     }, (err) => {
       this.presentAlert();
     });
   }
 
   ngOnInit() {
-    this.loadMap();
+    this.nativeStorage.getItem('token').then((value) => {
+      this.token = value;
+      this.parkingInfo.remember_token = this.token;
+    });
   }
 
   async presentModal() {
@@ -87,32 +146,77 @@ export class ManageDetailPage implements OnInit {
   }
 
   loadMap() {
+    LocationService.getMyLocation().then((myLocation: MyLocation) => {
 
-    let mapOptions: GoogleMapOptions = {
-      camera: {
-        target: {
-          lat: 43.0741904,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
+      if(this.parkid) {
+      } else {
+        this.parkingInfo.xcord = myLocation.latLng.lat;
+        this.parkingInfo.ycord = myLocation.latLng.lng;
       }
-    };
 
-    this.map = GoogleMaps.create('map_canvas', mapOptions);
+      let coords = {lat: this.parkingInfo.xcord, lng: this.parkingInfo.ycord};
 
-    let marker: Marker = this.map.addMarkerSync({
-      title: 'Ionic',
-      icon: 'blue',
-      animation: 'DROP',
-      position: {
-        lat: 43.0741904,
-        lng: -89.3809802
-      }
+      let mapOptions: GoogleMapOptions = {
+        camera: {
+          target: coords,
+          zoom: 18,
+          tilt: 30
+        }
+      };
+
+      this.map = GoogleMaps.create('map_canvas', mapOptions);
+
+      let marker: Marker = this.map.addMarkerSync({
+        title: 'Ionic',
+        icon: 'blue',
+        animation: 'DROP',
+        position: coords,
+        draggable: true,
+      });
+      marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(() => {
+        console.log(marker.getPosition().lat);
+        this.parkingInfo.xcord = marker.getPosition().lat;
+        this.parkingInfo.ycord = marker.getPosition().lng;
+      });
+
+  });
+  }
+
+  saveParking() {
+    if(this.parkid) {
+      this.updateParking();
+    } else {
+      this.insertParking();
+    }
+  }
+
+  insertParking() {
+    this.presentLoading('Saving...');
+    this.crud.addParking(this.parkingInfo).then((res) => {
+      console.log('Res ' + res);
+      this.loadingCtrl.dismiss();
+      this.parkingInfo.parkplatz = '';
+      this.parkingInfo.strab = '';
+      this.parkingInfo.parkplatz = '';
+      this.parkingInfo.strab = '';
+      this.parkingInfo.haus = '';
+      this.parkingInfo.plz = '';
+      this.parkingInfo.ort = '';
+      this.parkingInfo.image = '../../assets/images/dummy-image.jpg';
+      this.navCtrl.back();
     });
-    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-      alert('clicked');
+  }
+
+  updateParking() {
+    this.presentLoading('Saving...');
+    this.crud.updateParking(this.parkingInfo, this.parkid).then((res) => {
+      this.loadingCtrl.dismiss();
+      this.navCtrl.back();
     });
+  }
+
+  deleteImage() {
+    this.dummyImg = '../../assets/images/dummy-image.jpg';
   }
 
 }

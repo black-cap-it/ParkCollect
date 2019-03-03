@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuPage } from '../menu/menu.page';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController, AlertController } from '@ionic/angular';
+import { CrudService } from '../services/crud/crud.service';
 
 @Component({
   selector: 'app-manage',
@@ -9,9 +10,16 @@ import { ModalController } from '@ionic/angular';
 })
 export class ManagePage implements OnInit {
 
-  constructor(public modalController: ModalController) { }
+  parkings: any;
+  result: boolean = false;
+
+  constructor(public modalController: ModalController, public crud: CrudService, public loadingCtrl: LoadingController, public alertController: AlertController) { }
 
   ngOnInit() {
+
+  }
+  ionViewWillEnter() {
+    this.getParkings();
   }
 
   async presentModal() {
@@ -20,6 +28,59 @@ export class ManagePage implements OnInit {
       componentProps: { value: 123 }
     });
     return await modal.present();
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    return await loading.present();
+  }
+
+  async warn() {
+    return new Promise(async (resolve) => {
+      const confirm = await this.alertController.create({
+        header: 'Alert',
+        message: 'Are you sure you want to delete the parking?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              return resolve(false);
+            },
+          },
+          {
+            text: 'OK',
+            handler: () => {
+              return resolve(true);
+            },
+          },
+        ],
+      });
+
+      await confirm.present();
+    });
+  }
+
+  getParkings() {
+    this.presentLoading();
+    this.crud.viewParkings().then((res) => {
+      console.log('data: ' + res);
+      this.parkings = res;
+      this.loadingCtrl.dismiss();
+    });
+  }
+
+  async deleteParking(id) {
+    this.warn().then((res) => {
+      if (res) {
+        this.crud.deleteParking(id).then((res) => {
+          this.getParkings();
+        })
+      }
+    });
+
   }
 
 }

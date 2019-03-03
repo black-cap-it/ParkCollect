@@ -30,6 +30,15 @@ const routes: Routes = [
                 ]
             },
             {
+                path: 'manage/manage-detail/:id',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: '../manage-detail/manage-detail.module#ManageDetailPageModule'
+                    }
+                ]
+            },
+            {
                 path: 'false',
                 children: [
                     {

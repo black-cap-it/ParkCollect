@@ -29,8 +29,11 @@
         <ion-input>Zufahrt blockiert</ion-input>
       </ion-item>
       <ion-item>
-        <ion-label (click)="openPicker()">Tarif</ion-label>
-        <ion-label (click)="openPicker()">{{picker.nodeValue}}</ion-label>
+        <ion-label (click)="check()">Tarif</ion-label>
+        <ion-select placeholder="Select One">
+          <ion-select-option value="1">19,00 EUR, Standard</ion-select-option>
+          <ion-select-option value="2">39,90 EUR, Spezial</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Telefon</ion-label>

@@ -12,6 +12,7 @@ import { GoogleMaps,
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { PickerController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-false-detail',
@@ -22,18 +23,32 @@ export class FalseDetailPage implements OnInit {
 
   map: GoogleMap;
   img: string = "../../assets/images/dummy-image.jpg";
-  value: string;
+  dam = 'jj';
 
   constructor(public alertController: AlertController, public modalController: ModalController, private photoLibrary: PhotoLibrary, private camera: Camera, public pickerCtrl: PickerController) { }
 
+  updateDam (dt) {
+    this.dam = dt;
+    alert(this.dam);
+  }
+
   async openPicker() {
+    let dt = '';
     const picker = await this.pickerCtrl.create({
       buttons: [{
+        text: 'Stornieren',
+      },
+      {
         text: 'Fertig',
-      }],
+        handler(data) {
+          //updateDam(data.damage.text);
+          dt = data.damage.text;
+        }
+      }
+      ],
       columns: [
         {
-          name: 'days',
+          name: 'damage',
           options: [
             {
               text: '19,00 EUR, Standard',
@@ -52,7 +67,17 @@ export class FalseDetailPage implements OnInit {
       ]
     });
     await picker.present();
+    
+    await picker.onDidDismiss().then(function(r){
+      console.log(dt);
+      this.updateDam(dt);
+    });
+    
 
+  }
+
+  check () {
+    alert(this.dam);
   }
 
   getPhoto() {
